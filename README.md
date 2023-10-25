@@ -1,2 +1,2 @@
-# -hero-treegen
+# treegen
 A tool for generating and visualizing directory tree structures. 
