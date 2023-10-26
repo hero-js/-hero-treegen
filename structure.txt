@@ -1,0 +1,7 @@
+~/
+  index.ts
+  Node.ts
+  tests/
+    treegen.test.ts
+  Treegen.ts
+  types.ts
