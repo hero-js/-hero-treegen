@@ -1,0 +1,8 @@
+.eslintignore
+.eslintrc
+.npmignore
+jest.config.js
+pnpm-lock.yaml
+src/
+typedoc.json
+docs

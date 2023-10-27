@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "outDir": "lib",
+    "outDir": "dist",
     "sourceMap": true,
     "target": "es2022",
     "module": "commonjs",
@@ -15,7 +15,9 @@
     "baseUrl": ".",
     "removeComments": true,
     // "noUnusedLocals": true,
-    "noLib": false
+    "noLib": false,
+    "declaration": true
   },
-  "include": ["src/**/*.ts", "src/**/*.js"]
+  "include": ["src/**/*.ts", "src/**/*.js"],
+  "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]
 }
