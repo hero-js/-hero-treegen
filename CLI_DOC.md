@@ -6,7 +6,7 @@ The Treegen CLI is a command-line tool for generating and visualizing directory 
 
 Before using Treegen CLI, make sure to install it globally or as a local dependency within your project.
 
-### Install globally (recommended)
+### Install globally (recommended for use cli)
 
 ```bash
 npm install -g treegen

@@ -22,7 +22,9 @@
 <li><strong>Generate Tree Visualization</strong>: Generate directory tree structures and customize the appearance.</li>
 </ul>
 <a id="md:installation" class="tsd-anchor"></a><h2><a href="#md:installation">Installation</a></h2><p>To use Treegen in your TypeScript project, you can install it via npm:</p>
-<pre><code class="language-bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-3">-g</span><span class="hl-1"> </span><span class="hl-2">treegen</span>
+<a id="md:install-globally-recommended-for-use-cli" class="tsd-anchor"></a><h3><a href="#md:install-globally-recommended-for-use-cli">Install globally (recommended for use cli)</a></h3><pre><code class="language-bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-3">-g</span><span class="hl-1"> </span><span class="hl-2">treegen</span>
+</code><button>Copy</button></pre>
+<a id="md:install-locally-within-your-project" class="tsd-anchor"></a><h3><a href="#md:install-locally-within-your-project">Install locally (within your project)</a></h3><pre><code class="language-bash"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">treegen</span>
 </code><button>Copy</button></pre>
 <a id="md:usage" class="tsd-anchor"></a><h2><a href="#md:usage">Usage</a></h2><p>Treegen can be used both programmatically and via the command line. Below are the available commands and their usage.</p>
 <a id="md:cli-commands" class="tsd-anchor"></a><h3><a href="#md:cli-commands">CLI Commands</a></h3><a id="md:scan-a-directory-and-output-its-structure" class="tsd-anchor"></a><h4><a href="#md:scan-a-directory-and-output-its-structure">Scan a Directory and Output Its Structure</a></h4><pre><code class="language-bash"><span class="hl-0">treegen</span><span class="hl-1"> </span><span class="hl-2">scan-dir</span><span class="hl-1"> </span><span class="hl-3">-d</span><span class="hl-1"> &lt;</span><span class="hl-2">directory-pat</span><span class="hl-1">h&gt;</span>
@@ -41,7 +43,7 @@
 <li><code>-d, --dir</code>: The directory path to scan.</li>
 <li><code>-s, --structure</code>: The file containing the directory structure.</li>
 </ul>
-<p>For more options and customizations, refer to the <a href="CLI_DOC.md">cli documentation</a>.</p>
+<p>For more options and customizations, refer to the <a href="https://github.com/hero-js/treegen/blob/main/CLI_DOC.md">cli documentation</a>.</p>
 <a id="md:programmatically" class="tsd-anchor"></a><h3><a href="#md:programmatically">Programmatically</a></h3><p>Treegen can also be used programmatically in your TypeScript projects. Here&#39;s an example of how to use it:</p>
 <pre><code class="language-typescript"><span class="hl-4">import</span><span class="hl-1"> { </span><span class="hl-5">Treegen</span><span class="hl-1">, </span><span class="hl-5">Node</span><span class="hl-1"> } </span><span class="hl-4">from</span><span class="hl-1"> </span><span class="hl-2">&#39;treegen&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-6">// Create a Treegen instance</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-7">treegen</span><span class="hl-1"> = </span><span class="hl-3">new</span><span class="hl-1"> </span><span class="hl-0">Treegen</span><span class="hl-1">();</span><br/><br/><span class="hl-6">// Scan a directory and generate a tree structure</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-7">structure</span><span class="hl-1"> = </span><span class="hl-5">treegen</span><span class="hl-1">.</span><span class="hl-0">scanDir</span><span class="hl-1">(</span><span class="hl-2">&#39;/path/to/directory&#39;</span><span class="hl-1">);</span><br/><br/><span class="hl-6">// Validate a directory structure from a file</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-7">isValid</span><span class="hl-1"> = </span><span class="hl-5">treegen</span><span class="hl-1">.</span><span class="hl-0">isValidStructure</span><span class="hl-1">(</span><span class="hl-5">structure</span><span class="hl-1">);</span><br/><br/><span class="hl-6">// Generate a tree visualization</span><br/><span class="hl-3">const</span><span class="hl-1"> </span><span class="hl-7">rootNode</span><span class="hl-1"> = </span><span class="hl-5">treegen</span><span class="hl-1">.</span><span class="hl-0">generateTree</span><span class="hl-1">({ </span><span class="hl-5">structure</span><span class="hl-1"> });</span><br/><span class="hl-5">rootNode</span><span class="hl-1">.</span><span class="hl-0">printTree</span><span class="hl-1">();</span>
 </code><button>Copy</button></pre>
@@ -62,9 +64,15 @@
 <pre><code><span class="hl-5">root</span><br/><span class="hl-1">|----</span><span class="hl-5">cli</span><span class="hl-1">.</span><span class="hl-5">ts</span><br/><span class="hl-1">|----</span><span class="hl-5">index</span><span class="hl-1">.</span><span class="hl-5">ts</span><br/><span class="hl-1">|----</span><span class="hl-5">Node</span><span class="hl-1">.</span><span class="hl-5">ts</span><br/><span class="hl-1">|----</span><span class="hl-5">tests</span><br/><span class="hl-1">|    |----</span><span class="hl-5">treegen</span><span class="hl-1">.</span><span class="hl-5">test</span><span class="hl-1">.</span><span class="hl-5">ts</span><br/><span class="hl-1">|----</span><span class="hl-5">Treegen</span><span class="hl-1">.</span><span class="hl-5">ts</span><br/><span class="hl-1">|----</span><span class="hl-5">types</span><span class="hl-1">.</span><span class="hl-5">ts</span>
 </code><button>Copy</button></pre>
 <p>Please note that the actual output may vary based on the structure of your directory or the content of the <code>structure.txt</code> file. The above examples are for illustration purposes and should reflect the expected behavior of your CLI commands.</p>
-<a id="md:license" class="tsd-anchor"></a><h2><a href="#md:license">License</a></h2><p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for details.</p>
-<a id="md:changelog" class="tsd-anchor"></a><h2><a href="#md:changelog">Changelog</a></h2><p>See <a href="CHANGELOG.md">CHANGELOG</a> for details on changes and new features.</p>
-<a id="md:contributing" class="tsd-anchor"></a><h2><a href="#md:contributing">Contributing</a></h2><p>Contributions are welcome! Please read <a href="CONTRIBUTING.md">CONTRIBUTING</a> for details on our code of conduct and the process for submitting pull requests.</p>
+<a id="md:documentation" class="tsd-anchor"></a><h2><a href="#md:documentation">Documentation</a></h2><ul>
+<li><a href="#md:programmatically">Getting Started</a></li>
+<li><a href="https://github.com/hero-js/treegen/blob/main/CLI_DOC.md">Command Line Interface (CLI) Guide</a></li>
+<li><a href="https://hero-js.github.io/treegen">API Reference</a></li>
+</ul>
+<p>The documentation will help you make the most out of Treegen in your projects.</p>
+<a id="md:license" class="tsd-anchor"></a><h2><a href="#md:license">License</a></h2><p>This project is licensed under the MIT License. See the <a href="https://github.com/hero-js/treegen/blob/main/LICENSE">LICENSE</a> file for details.</p>
+<a id="md:changelog" class="tsd-anchor"></a><h2><a href="#md:changelog">Changelog</a></h2><p>See <a href="https://github.com/hero-js/treegen/blob/main/CHANGELOG.md">CHANGELOG</a> for details on changes and new features.</p>
+<a id="md:contributing" class="tsd-anchor"></a><h2><a href="#md:contributing">Contributing</a></h2><p>Contributions are welcome! Please read <a href="https://github.com/hero-js/hero/blob/main/CONTRIBUTING.md">CONTRIBUTING</a> for details on our code of conduct and the process for submitting pull requests.</p>
 <a id="md:contact" class="tsd-anchor"></a><h2><a href="#md:contact">Contact</a></h2><p>If you have any questions or feedback, feel free to reach out to [<a href="mailto:yasfp.pro@gmail.com">yasfp.pro@gmail.com</a>].</p>
 </div></div>
 <div class="col-sidebar">
@@ -93,6 +101,10 @@
 <ul>
 <li><a href="#md:features"><span>Features</span></a></li>
 <li><a href="#md:installation"><span>Installation</span></a></li>
+<li>
+<ul>
+<li><a href="#md:install-globally-recommended-for-use-cli"><span>Install globally (recommended for use cli)</span></a></li>
+<li><a href="#md:install-locally-within-your-project"><span>Install locally (within your project)</span></a></li></ul></li>
 <li><a href="#md:usage"><span>Usage</span></a></li>
 <li>
 <ul>
@@ -109,6 +121,7 @@
 <li><a href="#md:example-1-scanning-a-directory-and-outputting-its-structure"><span>Example 1: <wbr/>Scanning a <wbr/>Directory and <wbr/>Outputting <wbr/>Its <wbr/>Structure</span></a></li>
 <li><a href="#md:example-2-validating-a-directory-structure"><span>Example 2: <wbr/>Validating a <wbr/>Directory <wbr/>Structure</span></a></li>
 <li><a href="#md:example-3-generating-a-tree-visualization"><span>Example 3: <wbr/>Generating a <wbr/>Tree <wbr/>Visualization</span></a></li></ul></li>
+<li><a href="#md:documentation"><span>Documentation</span></a></li>
 <li><a href="#md:license"><span>License</span></a></li>
 <li><a href="#md:changelog"><span>Changelog</span></a></li>
 <li><a href="#md:contributing"><span>Contributing</span></a></li>

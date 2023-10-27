@@ -16,8 +16,16 @@ Treegen is a TypeScript package that provides functionality for generating and w
 
 To use Treegen in your TypeScript project, you can install it via npm:
 
+### Install globally (recommended for use cli)
+
 ```bash
 npm install -g treegen
+```
+
+### Install locally (within your project)
+
+```bash
+npm install treegen
 ```
 
 ## Usage
@@ -51,7 +59,7 @@ treegen generate-tree -d <directory-path> -s <structure-file>
 - `-d, --dir`: The directory path to scan.
 - `-s, --structure`: The file containing the directory structure.
 
-For more options and customizations, refer to the [cli documentation](CLI_DOC.md).
+For more options and customizations, refer to the [cli documentation](https://github.com/hero-js/treegen/blob/main/CLI_DOC.md).
 
 ### Programmatically
 
@@ -129,13 +137,21 @@ root
 
 Please note that the actual output may vary based on the structure of your directory or the content of the `structure.txt` file. The above examples are for illustration purposes and should reflect the expected behavior of your CLI commands.
 
+## Documentation
+
+- [Getting Started](#programmatically)
+- [Command Line Interface (CLI) Guide](https://github.com/hero-js/treegen/blob/main/CLI_DOC.md)
+- [API Reference](https://hero-js.github.io/treegen)
+
+The documentation will help you make the most out of Treegen in your projects.
+
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/hero-js/treegen/blob/main/LICENSE) file for details.
 
 ## Changelog
 
-See [CHANGELOG](CHANGELOG.md) for details on changes and new features.
+See [CHANGELOG](https://github.com/hero-js/treegen/blob/main/CHANGELOG.md) for details on changes and new features.
 
 ## Contributing
 
