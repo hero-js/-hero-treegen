@@ -1,8 +1,10 @@
 .eslintignore
 .eslintrc
 .npmignore
+.gitignore
 jest.config.js
 pnpm-lock.yaml
-src/
 typedoc.json
-docs
+tsconfig.json
+src/
+docs/

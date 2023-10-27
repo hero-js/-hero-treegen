@@ -15,7 +15,7 @@ root>Treegen.ts
 root>types.ts
 `;
 
-    structure = Treegen.scanDir({ dirPath, ignoreRules: [/Cli.ts/] });
+    structure = Treegen.scanDir({ dirPath, ignoreRules: [/cli.ts/] });
     expect(structure).toBe(expected);
   });
 
@@ -33,7 +33,7 @@ root>f::types.ts
       dirPath,
       root: 'root',
       typeMarker: true,
-      ignoreRules: [/Cli.ts/],
+      ignoreRules: [/cli.ts/],
     });
     expect(structure).toBe(expected);
   });
@@ -51,7 +51,7 @@ root>f::types.ts
       dirPath: './src',
       rootName: '~',
       useTypeMarker: true,
-      ignoreRules: [/Cli.ts/],
+      ignoreRules: [/cli.ts/],
     });
 
     expect(root instanceof Node && root.name === '~').toBe(true);
