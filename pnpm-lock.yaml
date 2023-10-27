@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  commander:
+    specifier: ^11.1.0
+    version: 11.1.0
+
 devDependencies:
   '@types/jest':
     specifier: ^29.5.6
@@ -11,9 +16,6 @@ devDependencies:
   '@types/node':
     specifier: ^20.8.9
     version: 20.8.9
-  commander:
-    specifier: ^11.1.0
-    version: 11.1.0
   jest:
     specifier: ^29.7.0
     version: 29.7.0(@types/node@20.8.9)(ts-node@10.9.1)
@@ -1020,7 +1022,7 @@ packages:
   /commander@11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
-    dev: true
+    dev: false
 
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}

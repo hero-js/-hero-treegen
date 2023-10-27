@@ -15,4 +15,4 @@ All notable changes to the "Treegen" project will be documented in this file.
 - Ability to scan directories and generate tree structures.
 - Ability to validate directory structures.
 - Ability to generate tree visualizations.
-- Documentation and README, .
+- Documentation and README.
