@@ -14,11 +14,18 @@ export default class Treegen {
    * @param {RegExp[]} ignoreRules - An array of regular expressions used to determine if the file should be ignored.
    * @returns {boolean} True if the filename should be ignored, false otherwise.
    */
-  private static shouldIgnore(
-    filename: string,
-    ignoreRules: RegExp[] = []
-  ): boolean {
+  static shouldIgnore(filename: string, ignoreRules: RegExp[] = []): boolean {
     return ignoreRules.some((rule) => rule.test(filename));
+  }
+
+  /**
+   * Parse ignore rules.
+   *
+   * @param {(string | RegExp)[]} ignoreRules - An array of regular expressions used to determine if the file should be ignored.
+   * @returns {RegExp[]}
+   */
+  static parseIgnoreRules(ignoreRules: (string | RegExp)[]) {
+    return ignoreRules.map((rule) => new RegExp(rule));
   }
 
   /**
@@ -27,23 +34,19 @@ export default class Treegen {
    * @param {Object} options - Options for scanning the directory and generating the structure.
    * @param {string} options.dirPath - The path to the directory to scan. Default: './'
    * @param {string} options.root - The name of the root directory in the structure. Default: 'root'
-   * @param {RegExp[]} options.ignoreRules - An array of regular expressions used to ignore specific files or directories.
+   * @param {(string | RegExp)[]} options.ignoreRules - An array of regular expressions used to ignore specific files or directories.
    * @param {boolean} options.typeMarker - Indicates whether to include type markers in the structure for files and directories. Default: false
    * @returns {string} A Treegen structure representing the directory's contents.
    */
   static scanDir(options: {
     dirPath?: string;
     root?: string;
-    ignoreRules?: RegExp[];
+    ignoreRules?: (string | RegExp)[];
     typeMarker?: boolean;
   }): TreegenStructure {
-    const {
-      dirPath = './',
-      root = 'root',
-      ignoreRules = [],
-      typeMarker = false,
-    } = options;
+    const { dirPath = './', root = 'root', typeMarker = false } = options;
     const files = fs.readdirSync(dirPath);
+    const ignoreRules = Treegen.parseIgnoreRules(options.ignoreRules ?? []);
     let structure = '';
 
     for (const file of files) {
@@ -88,6 +91,7 @@ export default class Treegen {
    * @param {string} options.structure - A Treegen structure to use (optional).
    * @param {string} options.rootName - The name of the root directory in the structure. Default: 'root'
    * @param {boolean} options.useTypeMarker - Indicates whether to use type markers in the structure. Default: false
+   * @param {(string | RegExp)[]} options.ignoreRules - An array of regular expressions used to ignore specific files or directories.
    * @returns {Node} The root Node of the generated tree structure.
    * @throws {TypeError} If the provided structure is not a valid Treegen structure.
    */
@@ -96,23 +100,31 @@ export default class Treegen {
     structure,
     rootName = 'root',
     useTypeMarker = false,
+    ignoreRules = [],
   }: {
     dirPath?: string;
     structure?: TreegenStructure;
     rootName?: string;
     useTypeMarker?: boolean;
+    ignoreRules?: RegExp[];
   }): Node {
-    if (!structure)
+    let customStructure = false;
+    let isIgnoreRulesParsed = false;
+
+    if (structure) {
+      if (!Treegen.isValidStructure(structure, rootName))
+        throw new TypeError(
+          'The given structure is not a valid Treegen structure'
+        );
+
+      customStructure = true;
+    } else
       structure = Treegen.scanDir({
         dirPath: dirPath,
         root: rootName,
         typeMarker: useTypeMarker,
+        ignoreRules,
       });
-
-    if (!Treegen.isValidStructure(structure, rootName))
-      throw new TypeError(
-        'The given structure is not a valid Treegen structure'
-      );
 
     const splitedStructure = structure
       .trim()
@@ -142,6 +154,15 @@ export default class Treegen {
         } else if (partWithFileMarker.startsWith('d::')) {
           part = partWithFileMarker.substring(3);
           nodeType = 'dir';
+        }
+
+        if (customStructure) {
+          if (!isIgnoreRulesParsed) {
+            ignoreRules = Treegen.parseIgnoreRules(ignoreRules);
+            isIgnoreRulesParsed = true;
+          }
+
+          if (Treegen.shouldIgnore(part, ignoreRules)) continue;
         }
 
         let childNode = currentNode.children.find(

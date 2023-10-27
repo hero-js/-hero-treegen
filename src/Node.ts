@@ -70,7 +70,7 @@ export default class Node {
       treeCharacter = '|',
       useTreeCharacter = true,
       inDirCharacter = '/',
-      useInDirCharacter = true,
+      useInDirCharacter = false,
     } = options;
 
     const indent =
