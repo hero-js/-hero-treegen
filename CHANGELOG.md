@@ -2,6 +2,12 @@
 
 All notable changes to the "Treegen" project will be documented in this file.
 
+## [1.0.11] - 2024-01-08
+
+### Added
+
+- Switch from pnpm to npm
+
 ## [1.0.1] - 2023-10-27
 ### Changed
 

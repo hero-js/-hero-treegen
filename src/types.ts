@@ -50,3 +50,5 @@ export type TreegenStructure =
  * @type {string}
  */
 export type NodeType = 'file' | 'dir' | 'any';
+
+// TODO: Populate jsdoc for interfaces properties
